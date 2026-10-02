@@ -1,0 +1,23 @@
+services:
+  pocketbase-backend:
+    build:
+      context: .
+      dockerfile: dev_tools/pocketbase/Dockerfile
+    container_name: pocketbase-backend
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    environment:
+      - PORT=8090
+      - DEV_MODE=true
+      - ADMIN_EMAIL=admin@example.com
+      - ADMIN_PASSWORD=supersecret
+    volumes:
+      - ./pb_data:/app/pb_data
+      - ./pb_public:/app/pb_public
+      - ./:/app/
+    healthcheck:
+      test: curl -f http://localhost:8090/api/health || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 3

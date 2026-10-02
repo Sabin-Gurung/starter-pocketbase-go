@@ -1,0 +1,22 @@
+# Binaries & build outputs
+/app
+/main
+/go-pocketbase-starter
+*.exe
+*.exe.*
+*.dll
+*.so
+*.dylib
+
+# PocketBase data directory
+/pb_data/
+/pb_migrations/
+
+# OS and IDE files
+.DS_Store
+.idea/
+.vscode/
+
+# Environment files
+.env
+.env.local
